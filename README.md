@@ -25,5 +25,6 @@ ChatGPT: Leveraged for debugging issues. ChatGPT also provided suggestions for d
 ### Prerequisites
 1. Java 21
 2. Maven
-3. MySQL
-4. Git
+3. Xampp
+4. nySql
+5. Git
