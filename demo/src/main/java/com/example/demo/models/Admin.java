@@ -1,6 +1,8 @@
 package com.example.demo.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.util.Objects;
 
@@ -13,19 +15,17 @@ public class Admin {
     private String email;
     private String password;
     private String phoneNumber;
-    private String role;
 
 
     public Admin() {
     }
 
-    public Admin(int id, String name, String email, String password, String phoneNumber, String role) {
+    public Admin(int id, String name, String email, String password, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.role = role;
     }
 
     public int getId() {
@@ -67,15 +67,6 @@ public class Admin {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
-    public String getRole() {
-        return this.role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
 
     public Admin id(int id) {
         setId(id);
@@ -102,11 +93,6 @@ public class Admin {
         return this;
     }
 
-    
-    public Admin role(String role) {
-        setRole(role);
-        return this;
-    }
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -115,12 +101,12 @@ public class Admin {
             return false;
         }
         Admin admin = (Admin) o;
-        return id == admin.id && Objects.equals(name, admin.name) && Objects.equals(email, admin.email) && Objects.equals(password, admin.password) && Objects.equals(phoneNumber, admin.phoneNumber) && Objects.equals(role, admin.role);
+        return id == admin.id && Objects.equals(name, admin.name) && Objects.equals(email, admin.email) && Objects.equals(password, admin.password) && Objects.equals(phoneNumber, admin.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, password, phoneNumber, role);
+        return Objects.hash(id, name, email, password, phoneNumber);
     }
 
     @Override
@@ -131,7 +117,6 @@ public class Admin {
             ", email='" + getEmail() + "'" +
             ", password='" + getPassword() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", role='" + getRole() + "'" +
             "}";
     }
 

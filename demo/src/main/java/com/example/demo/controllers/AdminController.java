@@ -1,14 +1,23 @@
 package com.example.demo.controllers;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.example.demo.repositories.AdminRepository;
 
 
 
 @RestController
-public class AdminController {
-    @RequestMapping("/admin")
+@RequestMapping("/admin")
 
-    public String hello(){
-        return "hello";
+public class AdminController {
+    @Autowired
+    private AdminRepository adminRepository;
+
+    @GetMapping("/dashboard")
+    public ModelAndView adminIndex() {         
+        return new ModelAndView("admin/dashboard.html");
     }
 }
