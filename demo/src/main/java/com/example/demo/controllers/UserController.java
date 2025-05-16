@@ -31,7 +31,7 @@ public class UserController {
 
     @PostMapping("/signup")
     public ModelAndView saveUser(@Validated @ModelAttribute User user) {
-        ModelAndView mav = new ModelAndView("/user/signup.html");
+        ModelAndView mav = new ModelAndView("/authentication/signup.html");
         mav.addObject("user", user);
 
         if (user.isEmpty(user.getFullname()) || user.isEmpty(user.getUsername()) ||
@@ -98,11 +98,10 @@ public class UserController {
         return mav;
     }
 
-
     @PostMapping("/login")
     public ModelAndView loginProcess(@RequestParam("username") String username,
             @RequestParam("password") String password, HttpSession session) {
-        ModelAndView mav = new ModelAndView("/user/login.html");
+        ModelAndView mav = new ModelAndView("/authentication/login.html");
 
         if (username == null || password == null) {
             mav.addObject("loginError", "Please provide both username and password");
@@ -126,6 +125,7 @@ public class UserController {
         // Redirect to the index page after successful login
         session.setAttribute("user_id", dbUser.getId());
         session.setAttribute("username", dbUser.getUsername());
+        session.setAttribute("role", dbUser.getRole());
         
         // Use service to determine dashboard based on role
         String dashboard = userService.getUserDashboard(dbUser.getId());
