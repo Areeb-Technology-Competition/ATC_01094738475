@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/signup")
     public ModelAndView addUser() {
-        ModelAndView mav = new ModelAndView("/user/signup.html");
+        ModelAndView mav = new ModelAndView("/authentication/signup.html");
         User newUser = new User();
         mav.addObject("user", newUser);
         return mav;
@@ -77,8 +77,6 @@ public class UserController {
 
             String encodedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
             user.setPassword(encodedPassword);
-            // String encodedConfirmPassword = BCrypt.hashpw(user.getConfirmpassword(), BCrypt.gensalt(12));
-            // user.setConfirmpassword(encodedConfirmPassword);
             user.setRole("user");
 
             this.userService.saveUser(user);
@@ -95,7 +93,7 @@ public class UserController {
 
     @GetMapping("/login")
     public ModelAndView login() {
-        ModelAndView mav = new ModelAndView("/user/login.html");
+        ModelAndView mav = new ModelAndView("/authentication/login.html");
         mav.addObject("username");
         return mav;
     }
@@ -139,5 +137,10 @@ public class UserController {
         session.invalidate();
         return new ModelAndView("redirect:/User/index");
     }
+    @GetMapping("/access-denied")
+    public ModelAndView accessDenied() {
+        return new ModelAndView("/error/access_denied.html");
+    }
+
 
 }
