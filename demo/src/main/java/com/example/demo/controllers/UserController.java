@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.models.User;
 import com.example.demo.repositories.UserRepository;
+import com.example.demo.services.UserService;
+
 import jakarta.servlet.http.HttpSession;
 
 @RestController
@@ -19,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/signup")
     public ModelAndView addUser() {
@@ -127,7 +132,10 @@ public class UserController {
         // Redirect to the index page after successful login
         session.setAttribute("user_id", dbUser.getId());
         session.setAttribute("username", dbUser.getUsername());
-        return new ModelAndView("redirect:/User/index");
+        
+        // Use service to determine dashboard based on role
+        String dashboard = userService.getUserDashboard(dbUser.getId());
+        return new ModelAndView("redirect:/" + dashboard);
 
     }
     @GetMapping("/logout")
