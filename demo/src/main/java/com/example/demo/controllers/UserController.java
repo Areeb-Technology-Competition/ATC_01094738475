@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.models.User;
-import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -18,9 +17,6 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 
 public class UserController {
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private UserService userService;
@@ -85,7 +81,7 @@ public class UserController {
             // user.setConfirmpassword(encodedConfirmPassword);
             user.setRole("user");
 
-            this.userRepository.save(user);
+            this.userService.saveUser(user);
 
             return new ModelAndView("redirect:/login");
         }
@@ -93,7 +89,7 @@ public class UserController {
     }
 
     public boolean isUsernameTaken(String username) {
-        User existingUser = userRepository.findByUsername(username);
+        User existingUser = userService.findByUsername(username);
         return existingUser != null;
     }
 
@@ -115,7 +111,7 @@ public class UserController {
             return mav;
         }
 
-        User dbUser = userRepository.findByUsername(username);
+        User dbUser = userService.findByUsername(username);
         if (dbUser == null) {
             mav.addObject("loginError", "Username not found");
             mav.addObject("loginErrorField", "username");
