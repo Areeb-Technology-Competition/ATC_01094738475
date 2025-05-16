@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Transient;
 import java.util.Objects;
 
 
@@ -18,6 +18,9 @@ public class User {
     private String email;
     private String phonenumber;
     private String password;
+    private String role;
+    
+    @Transient
     private String confirmpassword;
 
 
@@ -25,7 +28,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String fullname, String username, String email, String phonenumber, String password, String confirmpassword) {
+    public User(Long id, String fullname, String username, String email, String phonenumber, String password, String confirmpassword, String role) {
         this.id = id;
         this.fullname = fullname;
         this.username = username;
@@ -33,6 +36,7 @@ public class User {
         this.phonenumber = phonenumber;
         this.password = password;
         this.confirmpassword = confirmpassword;
+        this.role = role;
     }
 
     public Long getId() {
@@ -91,6 +95,15 @@ public class User {
         this.confirmpassword = confirmpassword;
     }
 
+    public String getRole() {
+        return this.role;
+    }
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
+
     public User id(Long id) {
         setId(id);
         return this;
@@ -125,6 +138,10 @@ public class User {
         setConfirmpassword(confirmpassword);
         return this;
     }
+    public User role(String role) {
+        setRole(role);
+        return this;
+    }
     public boolean isEmpty(String value) {
         return value == null || value.trim().isEmpty();
     }
@@ -146,12 +163,12 @@ public class User {
             return false;
         }
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(fullname, user.fullname) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && Objects.equals(phonenumber, user.phonenumber) && Objects.equals(password, user.password) && Objects.equals(confirmpassword, user.confirmpassword);
+        return Objects.equals(id, user.id) && Objects.equals(fullname, user.fullname) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && Objects.equals(phonenumber, user.phonenumber) && Objects.equals(password, user.password) && Objects.equals(confirmpassword, user.confirmpassword) && Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullname, username, email, phonenumber, password, confirmpassword);
+        return Objects.hash(id, fullname, username, email, phonenumber, password, confirmpassword, role);
     }
 
     @Override
@@ -164,6 +181,7 @@ public class User {
             ", phonenumber='" + getPhonenumber() + "'" +
             ", password='" + getPassword() + "'" +
             ", confirmpassword='" + getConfirmpassword() + "'" +
+            ", role='" + getRole() + "'" +
             "}";
     }
 

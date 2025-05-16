@@ -76,8 +76,9 @@ public class UserController {
 
             String encodedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
             user.setPassword(encodedPassword);
-            String encodedConfirmPassword = BCrypt.hashpw(user.getConfirmpassword(), BCrypt.gensalt(12));
-            user.setConfirmpassword(encodedConfirmPassword);
+            // String encodedConfirmPassword = BCrypt.hashpw(user.getConfirmpassword(), BCrypt.gensalt(12));
+            // user.setConfirmpassword(encodedConfirmPassword);
+            user.setRole("user");
 
             this.userRepository.save(user);
 
