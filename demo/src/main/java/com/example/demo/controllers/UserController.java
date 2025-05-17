@@ -12,10 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.models.User;
 import com.example.demo.services.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
-
 public class UserController {
 
     @Autowired
@@ -97,7 +97,7 @@ public class UserController {
         mav.addObject("username");
         return mav;
     }
-
+  
     @PostMapping("/login")
     public ModelAndView loginProcess(@RequestParam("username") String username,
             @RequestParam("password") String password, HttpSession session) {
@@ -135,12 +135,30 @@ public class UserController {
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         session.invalidate();
-        return new ModelAndView("redirect:/User/index");
+        return new ModelAndView("redirect:/user/index");
     }
     @GetMapping("/access-denied")
     public ModelAndView accessDenied() {
         return new ModelAndView("/error/access_denied.html");
     }
 
+    @GetMapping("/admin/dashboard")
+    public ModelAndView adminIndex(HttpSession session) {  
+        String role = (String)session.getAttribute("role");
+        String name = (String)session.getAttribute("username");
+        System.out.println(role);
+        System.out.println(name);
+        return new ModelAndView("admin/dashboard.html");
+    }
+
+    @GetMapping("/user/index")
+    public ModelAndView userIndex(HttpSession session) {  
+        String role = (String)session.getAttribute("role");
+        String name = (String)session.getAttribute("username");
+        System.out.println(role);
+        System.out.println(name);
+
+        return new ModelAndView("user/index.html");
+    }
 
 }
