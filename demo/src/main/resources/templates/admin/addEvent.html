@@ -1,0 +1,110 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/css/admin/adding.css">
+
+
+    <title>AdminHub</title>
+</head>
+
+<body>
+
+
+    <!-- SIDEBAR -->
+    <section th:replace="fragments/adminSidebar :: adminSidebar"></section>
+
+    <!-- CONTENT -->
+    <section id="content">
+        <nav th:replace="fragments/adminNavbar :: adminNavbar"></nav>
+
+        <!-- MAIN -->
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Add A New Event</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index.html">Dashboard</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right'></i></li>
+                        <li>
+                            <a class="active" href="#">Add Event</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="table-data">
+                <div class="order">
+                    <form class="form" th:action="@{/events/admin/add-event}" th:object="${event}" method="post">
+                        <div class="input-box">
+                            <label for="name">Event Name</label>
+                            <input type="text" id="name" th:field="*{name}" placeholder="Name">
+                        </div>
+                        <div class="input-box">
+                            <label>Event Description</label>
+                            <input type="text" id="description" th:field="*{description}" placeholder="Description">
+                        </div>
+                        <div class="input-box">
+                            <label>Event Image</label>
+                            <input type="file" id="image" th:field="*{image}" placeholder="Image">
+                        </div>
+                        <div class="input-box">
+                            <label>Event Venue</label>
+                            <input type="text" id="venue" th:field="*{venue}" placeholder="Venue">
+                        </div>
+                        <div class="input-box">
+                            <label>Event Category</label>
+                            <select th:field="*{category}">
+                                <option th:value="award-ceremony">Award Ceremony</option>
+                                <option th:value="birthday">Birthday</option>
+                                <option th:value="charity">Charity</option>
+                                <option th:value="conference">Conference</option>
+                                <option th:value="concert">Concert</option>
+                                <option th:value="exhibition">Exhibition</option>
+                                <option th:value="engagement">Engagement</option>
+                                <option th:value="festival">Festival</option>
+                                <option th:value="hackathon">Hackathon</option>
+                                <option th:value="meetup">Meetup</option>
+                                <option th:value="networking">Networking</option>
+                                <option th:value="panel-discussion">Panel Discussion</option>
+                                <option th:value="product-launch">Product Launch</option>
+                                <option th:value="reqruiting-evnt">Reqruiting Events</option>
+                                <option th:value="seminar">Seminar</option>
+                                <option th:value="summit">Summit</option>
+                                <option th:value="trade-show">Trade Show</option>
+                                <option th:value="training-sessions">Training Sessions</option>
+                                <option th:value="webinar">Webinar</option>
+                                <option th:value="workshop">Workshop</option>
+                                <option th:value="wedding">Wedding</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <label for="price">Event Price</label>
+                            <input type="number" id="price" name="price" min="0" step="0.01" placeholder="Price">
+                        </div>
+                        <div class="input-box">
+                            <label for="date">Event Date</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+
+                        <div>
+                            <button type="submit" name="submit" id="submit-button" value="submit">Add Event</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </main>
+        <!-- MAIN -->
+    </section>
+</body>
+
+</html>

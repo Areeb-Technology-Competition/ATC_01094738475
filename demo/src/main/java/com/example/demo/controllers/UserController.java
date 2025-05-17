@@ -28,7 +28,7 @@ public class UserController {
         mav.addObject("user", newUser);
         return mav;
     }
-
+ 
     @PostMapping("/signup")
     public ModelAndView saveUser(@Validated @ModelAttribute User user) {
         ModelAndView mav = new ModelAndView("/authentication/signup.html");
