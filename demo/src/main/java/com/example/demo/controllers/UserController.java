@@ -1,4 +1,6 @@
 package com.example.demo.controllers;
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -9,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.models.Event;
 import com.example.demo.models.User;
+import com.example.demo.services.EventService;
 import com.example.demo.services.UserService;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
@@ -20,6 +23,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private EventService eventService;
 
     @GetMapping("/signup")
     public ModelAndView addUser() {
@@ -157,8 +163,12 @@ public class UserController {
         String name = (String)session.getAttribute("username");
         System.out.println(role);
         System.out.println(name);
+        ModelAndView mav = new ModelAndView("user/index.html");
+        List<Event> events = this.eventService.findAllEvents();
+        mav.addObject("events", events);
+        return mav;
 
-        return new ModelAndView("user/index.html");
     }
+
 
 }

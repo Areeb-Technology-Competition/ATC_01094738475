@@ -64,8 +64,10 @@
                                 <td th:text="${event.date}"></td>
 
                                 <td>
-                                    <a th:href="@{/events/admin/edit-event/{id}(id=${event.id})}">Edit</a>
-                                    <a th:href="@{/events/admin/delete-event/{id}(id=${event.id})}">Delete</a>
+                                    <button id="edit"><a th:href="@{/events/admin/edit-event/{id}(id=${event.id})}">Edit</a></button>&nbsp;
+                                    <button id="delete"><a th:href="@{/events/admin/delete-event/{id}(id=${event.id})}">Delete</a></button>&nbsp;
+                                    
+                                    
                                 </td>
                             </tr>
 

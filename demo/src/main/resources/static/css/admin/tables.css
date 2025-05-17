@@ -608,6 +608,8 @@ body {
 #delete {
     color: #ffffff;
 	background-color: rgb(246, 3, 3);
+	padding: 20;
+
 }
 
 button a {
@@ -623,6 +625,7 @@ button a {
 #edit {
 	background-color: var(--blue);
 	color: #ffffff;
+	padding: 20;
 }
 
 #edit:hover {
