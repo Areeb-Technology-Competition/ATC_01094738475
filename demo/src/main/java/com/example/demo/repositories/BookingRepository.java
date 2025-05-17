@@ -7,12 +7,5 @@ import com.example.demo.models.Booking;
 
 
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
-
-    // List<Booking> findTop10ByOrderByDateDesc();
-
-    // Booking findByUserId(Long user_id);
-
-    // Boolean existsByEventId(int event_id);
-
     
 }

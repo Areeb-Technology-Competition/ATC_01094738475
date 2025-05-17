@@ -55,51 +55,6 @@ public class BookingController {
     public ModelAndView accessDenied() {
         return new ModelAndView("/user/congratulations.html");
     }
-
-//     @GetMapping("my-bookings")
-//     public ModelAndView viewBookings(HttpSession session, HttpServletResponse response) throws IOException {
-//         ModelAndView mav = new ModelAndView("/user/bookingList.html");
-//         Long userId = (Long) session.getAttribute("user_id");
-//         if (userId != null) {
-//             Boolean exists = bookingRepository.existsByUserId(userId);
-//             if (exists) {
-//                 Booking booking = this.bookingRepository.findByUserId(userId);
-//                 mav.addObject("booking", booking);
-//             } else {
-//                 mav.addObject("booking", null);
-//                 this.message = "You don't have any booked appointments";
-//             }
-//         } else {
-//             response.sendRedirect("/user/Login");
-//         }
-
-//         mav.addObject("message", this.message);
-//         this.message = null;
-
-//         return mav;
-//     }
-
-//     @GetMapping("/admin/all-bookings")
-//     public ModelAndView viewAllBookings() throws IOException {
-//         ModelAndView mav = new ModelAndView("/admin/viewBookings.html");
-//         List<Booking> bookings = this.bookingRepository.findAll();
-//         mav.addObject("bookings", bookings);
-//         return mav;
-//     }
-
-//     @GetMapping("cancelled")
-//     public void cancelBooking(@RequestParam int id, HttpServletResponse response, HttpSession session)
-//             throws IOException {
-//         Booking booking = bookingRepository.findById(id).get();
-//         Appointment appointment = new Appointment();
-//         appointment.setDate(booking.getDate());
-//         appointment.setStartHr(booking.getStartHr());
-//         appointment.setEndHr(booking.getEndHr());
-//         appointment.setDoctor(booking.getDoctor());
-//         this.appointmentRepository.save(appointment);
-//         this.bookingRepository.delete(booking);
-//         this.message = "You have cancelled your booking";
-//         response.sendRedirect("/user/booking/my-bookings");
-//     }
+ 
 
 }

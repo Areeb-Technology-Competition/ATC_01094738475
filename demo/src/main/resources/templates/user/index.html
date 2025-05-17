@@ -51,45 +51,39 @@
           <ul class="popular-list">
 
             <li th:each="event : ${events}">
-              <div class="popular-card">
+              <a  th:href="@{/events/user/event_details/{id}(id=${event.id})}" >
 
-                <figure class="card-img">
-                  <img th:src="@{/images/${event.image}}" alt="${event.name}" loading="lazy">
-                </figure>
+                <div class="popular-card">
 
-                <div class="card-content">
+                  <figure class="card-img">
+                    <img src="/images/event2.jpg" alt="${event.name}" loading="lazy">
+                  </figure>
 
-                  <p class="card-subtitle">
-                    <a href="#" th:text="${event.category}"></a>
-                  </p>
+                  <div class="card-content">
 
-                  <p class="card-subtitle">
-                    <a href="#" th:text="${event.price}"></a>
-                  </p>
+                    <p class="card-subtitle">
+                      <a href="#" th:text="${event.category}"></a>
+                    </p>
 
-                  <h3 class="h3 card-title">
-                    <a href="#" th:text="${event.name}"> </a>
-                  </h3>
+                    <p class="card-subtitle">
+                      <a href="#" th:text="${event.price}"></a>
+                    </p>
 
-                  <p class="card-text" th:text="${event.description}">
-                  </p>
-                  <button class="btn btn-primary"><a  style="color:white;" th:href="@{/booking/user/booked(id=${event.id})}">Book Now</a></button>&nbsp;
+                    <h3 class="h3 card-title">
+                      <a th:text="${event.name}"> </a>
+                    </h3>
 
-
-
+                    <p class="card-text" th:text="${event.description}">
+                    </p>
+                    <button class="btn btn-primary"><a style="color:white;"
+                        th:href="@{/booking/user/booked(id=${event.id})}">Book Now</a></button>&nbsp;
+                  </div>
                 </div>
-
-
-
-              </div>
+              </a>
             </li>
-
           </ul>
-
-
         </div>
       </section>
-
 
       <footer th:replace="fragments/userFooter :: userFooter"></footer>
 

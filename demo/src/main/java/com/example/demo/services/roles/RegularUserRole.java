@@ -8,7 +8,7 @@ public class RegularUserRole implements UserRole {
 
     @Override
     public List<String> getPermittedPages() {
-        return List.of("/user/index", "/user/profile", "/booking/user/booked");
+        return List.of("/user/index", "/user/profile", "/booking/user/booked", "/events/user/event_details");
     }
     
 }
