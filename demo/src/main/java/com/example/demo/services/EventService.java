@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,18 @@ public class EventService {
             throw e;
         }
     }
+
+    public List<Event> findAllEvents(){
+        return eventRepository.findAll();
+    } 
+
+    public Event findEventById(int id){
+        return eventRepository.findById(id);
+    }
+
+    public Event deleteEventById(int id){
+        return eventRepository.deleteById(id);
+    }
+
 
 }

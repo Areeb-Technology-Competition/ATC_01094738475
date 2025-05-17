@@ -14,6 +14,7 @@ li {
 	list-style: none;
 }
 
+
 :root {
 	--poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
@@ -48,24 +49,6 @@ body {
 
 
 
-input::file-selector-button {
-	height: 100%;
-	background-color: var(--blue);
-	border: none;
-	border-radius: 50px;
-	color: white;
-	margin-right: 10px;
-	padding: 10px;
-}
-
-input::file-selector-button:hover {
-	background-color: #3AB9C0;
-	cursor: pointer;
-}
-
-#image {
-	padding: 0;
-}
 
 
 /* SIDEBAR */
@@ -169,7 +152,7 @@ input::file-selector-button:hover {
 }
 
 #sidebar .side-menu.top li.active a {
-	color: var(--blue);
+	color:  var(--blue);
 }
 
 #sidebar.hide .side-menu li a {
@@ -346,6 +329,7 @@ input::file-selector-button:hover {
 
 
 /* MAIN */
+
 #content main {
 	width: 100%;
 	padding: 36px 24px;
@@ -446,6 +430,12 @@ input::file-selector-button:hover {
 	color: var(--orange);
 }
 
+#content main .box-info li .text h3 {
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--dark);
+}
+
 #content main .box-info li .text p {
 	color: var(--dark);
 }
@@ -475,6 +465,12 @@ input::file-selector-button:hover {
 	margin-bottom: 24px;
 }
 
+#content main .table-data .head h3 {
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+}
+
 #content main .table-data .head .bx {
 	cursor: pointer;
 }
@@ -498,20 +494,6 @@ input::file-selector-button:hover {
 
 #content main .table-data .order table td {
 	padding: 16px 0;
-}
-
-#content main .table-data .order table tr td:first-child {
-	display: flex;
-	align-items: center;
-	grid-gap: 12px;
-	padding-left: 6px;
-}
-
-#content main .table-data .order table td img {
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	object-fit: cover;
 }
 
 #content main .table-data .order table tbody tr:hover {
@@ -595,7 +577,6 @@ input::file-selector-button:hover {
 		background: var(--red);
 	}
 
-	#content nav form.show~.notification,
 	#content nav form.show~.profile {
 		display: none;
 	}
@@ -614,87 +595,41 @@ input::file-selector-button:hover {
 }
 
 
-div.content {
-	padding: 1px 16px;
-	justify-content: center;
-	align-items: center;
-	height: 60vh;
-	margin-left: 25%;
-}
-
-.container {
-	position: relative;
-	max-width: 700px;
-	width: 100%;
-	background: #fff;
-	padding: 10px 70px 20px 70px;
-	margin: 50px 100px 100px 100px;
-	border-radius: 50px;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-	min-height: 100vh;
-
-}
-
-.form .input-box {
-	width: 100%;
-	margin-top: 20px;
-}
-
-textarea {
-	width: 100%;
-}
-
-.input-box label {
-	color: black;
-}
-
-.form :where(.input-box input, textarea, select) {
-	position: relative;
-	width: 100%;
-	outline: none;
-	font-size: 1rem;
-	color: #707070;
-	margin-top: 8px;
-	border: 1px solid #ddd;
-	border-radius: 20px;
-	padding: 0 15px;
-}
-
-.input-box input {
-	height: 40px;
-}
-
-#category
-{
-	height: 40px;
-}
-
-.input-box input:focus {
-	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-}
 
 
-.form button {
-	height: 55px;
-	width: 100%;
-	color: #fff;
-	font-size: 1rem;
-	font-weight: 400;
-	margin-top: 30px;
+.buttons {
+	padding: 5px;
+	border-radius: 5px;
+	width: 60%;
+	margin: 2px;
 	border: none;
+}
+
+#delete {
+    color: #ffffff;
+	background-color: rgb(246, 3, 3);
+}
+
+button a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#delete:hover {
 	cursor: pointer;
-	transition: all 0.2s ease;
-	background: var(--blue);
-	border-radius: 50px;
+	background-color: rgb(195, 6, 6);
 }
 
-.form button:hover {
-	background: #3AB9C0;
+#edit {
+	background-color: var(--blue);
+	color: #ffffff;
 }
 
-#header {
-	text-align: center;
+#edit:hover {
+	cursor: pointer;
+	background-color:#3AB9C0;
 }
+
 
 /*hide arrows of number*/
 input[type=number]::-webkit-inner-spin-button,

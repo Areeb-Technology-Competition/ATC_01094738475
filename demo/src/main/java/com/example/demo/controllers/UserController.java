@@ -137,7 +137,7 @@ public class UserController {
         session.invalidate();
         return new ModelAndView("redirect:/user/index");
     }
-    @GetMapping("/access-denied")
+    @GetMapping("/access-denied") 
     public ModelAndView accessDenied() {
         return new ModelAndView("/error/access_denied.html");
     }

@@ -8,7 +8,7 @@ public class AdminRole implements UserRole {
 
     @Override
     public List<String> getPermittedPages() {
-        return List.of("/admin/dashboard", "/events/admin", "/user/index"); 
+        return List.of("/admin/dashboard", "/events/admin", "/admin/users","/user/index");  
     }
     
 }

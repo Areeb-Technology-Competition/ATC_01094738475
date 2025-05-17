@@ -12,6 +12,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private RoleInterceptor roleInterceptor;
 
     @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
+    }
+
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(roleInterceptor)
                 .addPathPatterns("/admin/**", "/events/admin/**\"") // Apply to these paths
